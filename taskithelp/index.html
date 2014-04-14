@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>&nbsp;</title>
+		<style>
+			body {
+				font-size: 15px;
+				margin: 0 auto;
+				padding-left; 0px;
+				padding-right: 10px;
+			}
+			
+			#code {
+				background-color: #E4FAFF;
+				font-family: Courier New;
+				font-size: 15px;
+			}
+			
+			#note {
+				background: #DDDDDD;
+				font-family: sans-serif;
+				font-size: 13px;
+				margin-left: 5px;
+				margin-right: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1">		
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile-1.4.2.css" />
+		
+		<script src="jquery-mobile/jquery-1.10.2.js"></script>
+		
+
+		<script>
+			var currentPage = 1,
+				MAXPAGE = 10,	
+				MINPAGE = 1;
+				
+			function nextPage() {
+				if(currentPage >= MAXPAGE) {
+					currentPage = MINPAGE;
+				} else {
+					++currentPage;
+				}
+				return currentPage;
+			}
+			
+			function prevPage() {
+				if(currentPage <= MINPAGE) {
+					currentPage = MAXPAGE;
+				} else {
+					--currentPage;
+				}
+				return currentPage;
+			}
+			
+			$(document).ready(
+				function() {
+					$("#display").html( $("#p" + currentPage).html() );
+					$("#wtlinks a").click(
+						function(e) {
+							e.preventDefault();
+							if( $(this).attr("href") === "prev" ) {
+								$("#display").hide().fadeIn();
+								$("#display").html( $("#p" + prevPage()).html() );
+							} else if ( $(this).attr("href") === "next" ) {
+								$("#display").hide().fadeIn();
+								$("#display").html( $("#p" + nextPage()).html() );
+							}
+							return false;
+						}
+					);
+					$("body").keydown(
+						function(e) {
+							switch(e.keyCode) {
+							case 37:
+								$("#display").hide().fadeIn();
+								$("#display").html( $("#p" + prevPage()).html() );
+								break;
+							case 39:
+								$("#display").hide().fadeIn();
+								$("#display").html( $("#p" + nextPage()).html() );
+								break;
+							default:
+								break;
+							}
+						}
+					);
+				}
+			);
+		</script>
+		
+		<script src="jquery-mobile/jquery.mobile-1.4.2.js"></script>
+		
+	</head>
+	
+	<body>
+		<!--
+		
+			This is the main page
+		
+		-->
+		<div id="mainpage" data-role="dialog" style="text-align: center;">
+			<div data-role="header" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#commands" data-rel="dialog">Commands</a></li>
+						<li><a href="#hotkeys" data-rel="dialog">Hotkeys</a></li>
+						<li><a href="#themes" data-rel="dialog">Themes</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="displayedcontent" data-role="main" class="ui-content">
+				<img src="iconMain.png" style="height: 70px;"></img>
+				<img src="taskitLogo.png" style="height: 70px;"></img>
+				<br /><br />
+				<div style="text-align:left;">
+					Welcome to the help section of TaskIt. We understand that at some point in time
+					you may not be able to recall lesser used commands easily, so this user manual
+					has been created specially for you, our most valued user.<br /><br />
+					
+					Feeling a little confused with all the features we have and how they are being displayed?<br />
+					<a href="#walkthrough" class="ui-btn">Take me for a spin about the User Interface</a><br />
+					
+					The concept of TaskIt was conceived by the following awesome people:<br />
+						<ul>
+							<li>Joseph Matthias Goh</li>
+							<li>Yusuf Shamir</li>
+							<li>Kuek Shao Ning</li>
+							<li>Shiwani Agarwal</li>
+						</ul><br />
+					
+					TaskIt is licensed under the
+					<a href="https://www.gnu.org/copyleft/gpl.html">
+					GNU General Public License v3.0</a> and is hosted on
+					Google Code. Contact us at the following webpage if you wish to contribute to TaskIt and/or
+					have any comments for us: <a href="http://strikingly.com/taskit2103t">
+					TaskIt Landing Page</a><br />
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" style="bottom: 0px;">
+				Copyright (&copy;) 2014 of TaskIt Inc.
+			</div>
+		</div>
+		
+		<!--
+		
+			This part is what happens when you click the Walkthrough button
+		
+		-->
+		<div id="walkthrough" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to the Main Page</a></li>
+					</ul>
+				</div>
+				<div id="wtlinks" data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="prev" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">previous</a></li>
+						<li><a href="next" class="ui-btn ui-btn-icon-top ui-icon-arrow-r">next</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="display" data-role="main" class="ui-content ui-shadow">
+
+			</div>
+			<div data-role="footer">
+				Copyright (&copy;) 2014 of TaskIt Inc.
+			</div>
+		</div>
+			
+		<!--
+		
+			This part is what happens when you click the Commands tab
+		
+		-->
+		<div id="commands" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" data-position="fixed">
+					<ul>
+						<li><a href="#add" class="ui-btn ui-btn-icon-top ui-icon-plus">Add</a></li>
+						<li><a href="#del" class="ui-btn ui-btn-icon-top ui-icon-delete">Delete</a></li>
+						<li><a href="#upd" class="ui-btn ui-btn-icon-top ui-icon-edit">Update</a></li>
+						<li><a href="#arch" class="ui-btn ui-btn-icon-top ui-icon-minus">Archive</a></li>
+						<li><a href="#search" class="ui-btn ui-btn-icon-top ui-icon-search">Search</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				Searching for a thorough documentation of our commands? They're all in
+				the above buttons. For everything else, they're below!
+				<a class="ui-btn" href="#undoredo">
+					Our Time Machine
+				</a>
+				<a class="ui-btn" href="#dates">
+					View our Dates formats
+				</a>
+				<a class="ui-btn" data-rel="back">
+					Back to the main page
+				</a>
+			</div>
+			<div data-role="footer">
+				Copyright (&copy;) 2014 of TaskIt Inc.
+			</div>
+		</div>
+		
+		
+		<!--
+		
+			This part documents the Hotkeys
+		
+		-->
+		<div id="hotkeys" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to the Main Page</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<table width="100%">
+					<tr>
+						<td width="30%">
+							<b>Hotkey</b>
+						</td>
+						<td width="70%">
+							<b>Description</b>
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table width="100%">
+					<tr>
+						<td width="30%">
+							Ctrl + H
+						</td>
+						<td width="70%">
+							Help! This is how you got here.
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table>
+					<tr>
+						<td width="30%">
+							Ctrl + Q
+						</td>
+						<td width="70%">
+							This reduces TaskIt to a sleek bar avoiding desktop clutter.
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table>
+					<tr>
+						<td width="30%">
+							Ctrl + Y
+						</td>
+						<td width="70%">
+							Made a mistake while undoing? Just redo it with this hotkey!
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table>
+					<tr>
+						<td width="30%">
+							Ctrl + Z
+						</td>
+						<td width="70%">
+							Realized a typo just as you hit enter? We know that feeling. This hotkey undoes
+							what you just did, and you can hit the 'up arrow' key to load your previous command!
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div data-role="footer">
+				Copyright (&copy;) 2014 of TaskIt Inc.
+			</div>
+		</div>
+
+
+
+		<!--
+		
+			This part documents the Dates
+		
+		-->
+		<div id="dates" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				Our inbuilt date formatters have been developed via the Test-Driven-Development philosophy and
+				are designed with you, the user, in mind. All the possible dates we threw at it survived and we
+				hope it does the same for you, but just incase, here's some examples of dates we have tested using
+				the following date as an example: <center><h2>11th of April 2014</h2></center>
+				<div class="ui-grid-b ui-responsive">
+					<div class="ui-block-a">
+						<div class="ui-body ui-body-d">
+							fri<br />
+							11/4<br />
+							April eleventh<br />
+							11-4<br />
+							Friday 13:00hrs<br />
+							11/4 2pm<br />
+							Friday 3pm to 12pm<br />
+							11-4-2014 3am<br />
+							Apr 11 2014
+						</div>
+					</div>
+					<div class="ui-block-b">
+						<div class="ui-body ui-body-d">
+							Friday<br />
+							11 April<br />
+							11-4-2014<br />
+							11-4 2pm<br />
+							April 11<br />
+							This Friday 2:45pm<br />
+							11-4 2pm to 13:00pm<br />
+							Eleventh April 2014 13:00hrs to 16:00hrs<br />
+							Friday 02:00hrs
+						</div>
+					</div>
+					<div class="ui-block-c">
+						<div class="ui-body ui-body-d">
+							This Friday<br />
+							Eleventh april<br />
+							11/4/2014<br />
+							11 april 2014<br />
+							11 apr<br />
+							Apr 11<br />
+							Eleventh april 2am<br />
+							11th apr<br />
+							11-4 12:23hrs
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+		
+		
+		<!--
+		
+			This part documents the Undo/Redo functions
+		
+		-->
+		<div id="undoredo" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				Going back in time can be tricky business in real life, but here
+				in TaskIt, we have implemented your personal Time Machine where
+				you can backtrack to any action in the past (within the current
+				session) via our 'undo' and 'redo' commands.<br /><br />
+				
+				Format: <span id="code">undo</span><br />
+				Format: <span id="code">redo</span><br /><br />
+				
+				Incase you're wondering, we have them as hotkeys too for your convenience.
+				Check out our hotkeys page (accessible from the Main Page) to find out
+				more.
+			</div>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+
+
+		
+		<!--
+		
+			This part documents the Themes
+		
+		-->
+		<div id="themes" data-role="dialog" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to the Main Page</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				Themes can be accessed via the <i>themes</i> keyword. Simply enter 
+				<span id="code">theme mountain</span> for the Mountain theme (see below), or
+				<span id="code">theme lunar</span> for our dark-side Lunar theme.<br /><br />
+				<table width="100%">
+					<tr>
+						<td width="30%">
+							<b>Theme</b>
+						</td>
+						<td width="70%">
+							<b>Description</b>
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table width="100%">
+					<tr>
+						<td width="30%">
+							Mountain
+						</td>
+						<td width="70%">
+							The <i>de facto</i> theme for TaskIt. Clean, fast and refreshing.
+						</td>
+					</tr>
+				</table>
+				<hr />
+				<table>
+					<tr>
+						<td width="30%">
+							Lunar
+						</td>
+						<td width="70%">
+							Fancy a little dark-side fantasy? Lunar is the theme for you.
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div data-role="footer">
+				Copyright (&copy;) 2014 of TaskIt Inc.
+			</div>
+		</div>
+		
+		
+		<!--
+		
+			This section documents the add commands
+		
+		-->
+		<div id="search" data-role="dialog" class="ui-content" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h1>Searching for Items</h1>
+				Getting lost in the massive amount of work you have managed to get
+				done with the assistance of your friendly TaskIt? No worries! We have a
+				host of search facilities for you to effectively identify tasks you've
+				created using TaskIt.
+				<div class="ui-content" data-role="collapsible">
+					<h1>Current tasks</h1>
+					Format: <span id="code">search [search term]</span><br />
+					Example: <span id="code">search lunch</span><br />
+				</div>
+				<div class="ui-content" data-role="collapsible">
+					<h1>Completed tasks</h1>
+					Format: <span id="code">search -a [search term]</span><br/ >
+					Example: <span id="code">search business meeting</span><br />
+				</div>
+				<div class="ui-content" data-role="collapsible">
+					<h1>Dated tasks</h1>
+					Format: <span id="code">search -d [date]</span><br />
+					Example: <span id="code">search 10 april 2014</span><br />
+				</div>
+			</div>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+				
+		<!--
+		
+			This section documents the add commands
+		
+		-->
+		<div id="add" data-role="dialog" class="ui-content" data-close-btn="none">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h1>Adding items</h1>
+				We have three types of items which you can add with the following commands:<br />
+				<div class="ui-content" data-role="collapsible">
+					<h1>Todo tasks (<i>no time context</i>)</h1>
+					Format: <span id="code">add [task name]</span><br />
+					Example: <span id="code">add Call grandma</span><br />
+				</div>
+				<div class="ui-content" data-role="collapsible">
+					<h1>Deadlines tasks (<i>ends at a given date & time</i>)</h1>
+					Format: <span id="code">add [task name] by [date]</span><br />
+					Example: <span id="code">add Business plan submission by today 4pm</span><br />
+				</div>
+				<div class="ui-content" data-role="collapsible">
+					<h1>Events tasks (<i>lasts for a specified duration</i>)</h1>
+					Format: <span id="code">add [task name] from [date1] to [date2]</span><br />
+					Example: <span id="code">add Lunch with Boss from today 1pm to 3pm</span><br />
+				</div>
+			</div>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+
+
+
+		<!--
+		
+			This section documents the delete commands
+		
+		-->
+		<div id="del" data-role="dialog" class="ui-content">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h1>Deleting items</h1>
+				Removing an item from the TaskIt console requires the use of the item index as seen below within the red circle.
+				<br /><br /><center><img src="taskit_index_circled.jpg" width="100%"></img></center><br />
+				
+				Deleting items is as simple as:<br />
+				Format: <span id="code">delete [index]</span><br />
+				Example: <span id="code">delete 3</span><br />
+			</div>
+			
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+
+
+
+		<!--
+		
+			This section documents the update commands
+		
+		-->
+		<div id="upd" data-role="dialog" class="ui-content">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h1>Updating items</h1>
+				This is where it starts to get tricky but we promise it will pay off as you
+				become increasingly familiar with the intuitive nature of TaskIt.<br /><br />
+				
+				Updating requires the use of the item index as seen circled (in red) in the snapshot
+				below:<br /><br /><center><img src="taskit_index_circled.jpg" width="100%"></img></center><br /><br />
+				
+				<div class="ui-content" data-role="collapsible">
+					<h1>Todo tasks</h1>
+					Updating of a <b>Todo</b> task is as simple as:<br />
+					Format: <span id="code">update [index]; [new title here]</span><br />
+					Example: <span id="code">update 5; A fresh new todo</span><br /><br />
+				</div>
+				
+				<div class="ui-content" data-role="collapsible">
+					<h1>Deadline tasks</h1>
+					Updating of a <b>Deadline</b> task is as simple as having another field:<br />
+					Format: <span id="code">update [index]; [new title]; [new date]</span><br />
+					Example 1: <span id="code">update 2; A wild Deadline appeared!; today 3pm;</span><br />
+					Example 2: <span id="code">update 2; It was not very effective!; ;</span><br />
+					Example 3: <span id="code">update 2; ; today 4pm;</span><br /><br />
+					
+					For the above examples, <i>Example 1</i> updates both the task title as well as the date & time,
+					<i>Example 2</i> updates only the task title, while <i>Example 3</i> updates the date
+					& time alone.<br />
+				</div>
+				
+				<div class="ui-content" data-role="collapsible">
+					<h1>Events tasks</h1>
+					Updating of an <b>Events</b> task requires one last semi-colon:<br />
+					Format: <span id="code">update [index]; [new title]; [new start date]; [new end date];</span><br />
+					Example 1: <span id="code">update 2; A wild Event appeared!; today 3pm; tomorrow 4pm;</span><br />
+					Example 2: <span id="code">update 2; It was not very effective!; ; ;</span><br />
+					Example 3: <span id="code">update 2; ; today 4pm; ;</span><br />
+					Example 4: <span id="code">update 2; ; ; tomorrow 3pm;</span><br /><br />
+					
+					For the above examples, <i>Example 1</i> updates both the task title as well as the date & times,
+					<i>Example 2</i> updates only the task title, while <i>Example 3</i> updates the starting date
+					& time alone and <i>Example 4</i> updates the ending date & time alone.<br /><br />
+				</div>
+			</div>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+		</div>
+
+
+
+		<!--
+		
+			This section documents the archive/complete/done commands
+		
+		-->
+		<div id="arch"  data-role="dialog" class="ui-content">
+			<div data-role="header">
+				<div data-role="navbar" style="text-align:center;">
+					<ul>
+						<li><a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h1>Archiving items</h1>
+				Archiving an item from the TaskIt console requires the use of the item index as seen below within the red circle.
+				<br /><br /><center><img src="taskit_index_circled.jpg" width="100%"></img></center><br />
+				
+				Archiving items is as simple as:<br />
+				Format: <span id="code">archive [index]</span><br />
+				Example: <span id="code">archive 3</span><br /><br />
+				
+				In addition, we also have several variants of this command depending on your preference.
+				Archive is also known as <span id="code">complete</span> and even <span id="code">done</span>. 
+				Both will work in a similar fashion to <span id="code">archive</span>.<br />
+			</div>
+			
+			<a href="#" data-rel="back" class="ui-btn ui-btn-icon-top ui-icon-arrow-l">Back to Commands</a>
+
+		</div>
+		
+		<div id="p1" data-role="page">
+			<div data-role="header">
+				Main page of TaskIt
+			</div>
+			<div data-role="main" class="ui-content">
+				<img src="taskit-walkthru1.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This is the main interface of TaskIt. Click the right arrow above to continue scrolling
+				through the walkthrough.
+			</div>
+		</div>
+		<div id="p2" data-role="page">
+			<div data-role="header">
+				Deadlines and Schedules
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru2.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This panel shows to you all tasks which either have to be completed by a certain
+				time (Deadlines) or tasks which have a start and end time (Schedules/Events)
+			</div>
+		</div>
+		<div id="p3" data-role="page">
+			<div data-role="header">
+				Todos
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru3.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This panel shows the todos tasks (tasks which have no time context).
+			</div>
+		</div>
+		<div id="p4" data-role="page">
+			<div data-role="header">
+				Calendar
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru4.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This panel shows a calendar of the current month. The present day will be
+				highlighted in a green box, while days with Deadlines will be highlighted
+				in Blue while Events will be highlighted in Orange (in the original Mountain theme)
+			</div>
+		</div>
+		<div id="p5" data-role="page">
+			<div data-role="header">
+				The Input Box
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru5.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This input box allows you to enter the commands. Check out our Commands page
+				which is accessible via the <a href="#" data-rel="back">Main Page</a> of this document.
+			</div>
+		</div>
+		<div id="p6" data-role="page">
+			<div data-role="header">
+				Tabs
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru6.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				These tabs show where you are at within the application and what TaskIt is displaying
+			</div>
+		</div>
+		<div id="p7" data-role="page">
+			<div data-role="header">
+				This is the Home button
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru7.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				Click this to view all currently ongoing tasks
+			</div>
+		</div>
+		<div id="p8" data-role="page">
+			<div data-role="header">
+				This is the Today button
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru8.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This button shows you all tasks that will be either starting today (for Events),
+				or ending today (for Deadlines).
+			</div>
+		</div>
+		<div id="p9" data-role="page">
+			<div data-role="header">
+				This is the Archives button
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru9.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				This button shows you all tasks which you have marked as completed.
+			</div>
+		</div>
+		<div id="p10" data-role="page">
+			<div data-role="header">
+				This is the System Bar
+			</div>
+			<div data-role="main">
+			<img src="taskit-walkthru10.jpg" width="100%"></img>
+			</div>
+			<div data-role="footer">
+				These buttons allow you to minimize TaskIt to the Taskbar and to close TaskIt.
+			</div>
+		</div>
+	</body>
+
+</html>
