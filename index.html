@@ -5,28 +5,20 @@
 		// meta tags   //
 		// // // // // //
 		-->
-		<meta name='viewport'
-			content='width=device-width, initial-scale=1' />
-		<meta name='author'
-			content='Joseph Matthias Goh a.k.a. zephinzer' />
-		<meta charset='utf-8' />
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<meta name="author" content="Joseph Matthias Goh a.k.a. zephinzer"></meta>
+		<meta charset="utf-8" />
 		
 		<!--
 		// // // // // // // // // // // // // // // // // // // // //
 		// local jquery (do not push these files during deployment) //
 		// // // // // // // // // // // // // // // // // // // // //
 		-->
-		<link
-			rel='stylesheet',
-			type='text/css',
-			href='jquery/themes/base/minified/jquery-ui.min.css'></link>
-		<link
-			rel='stylesheet',
-			type='text/css',
-			href='jquery/jquery.mobile.theme-1.4.2.min.css'></link>
-		<script src='jquery/jquery.mobile-1.4.2.min.js'></script>
-		<script src='jquery/jquery-1.10.2.js'></script>
-		<script src='jquery/jquery-ui.js'></script>
+		<link rel="stylesheet" type="text/css" href="jquery/themes/base/minified/jquery-ui.min.css"></link>
+		<link rel="stylesheet" type="text/css" href="jquery/jquery.mobile.theme-1.4.2.css"></link>
+		<script src="jquery/jquery.mobile-1.4.2.js"></script>
+		<script src="jquery/jquery-1.10.2.js"></script>
+		<script src="jquery/jquery-ui.js"></script>	
 		
 		<!--
 		// // // // // // // // // // // // 
@@ -44,9 +36,25 @@
 		<script src='http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js'></script>
 		<script src='http://code.jquery.com/ui/1.10.2/jquery-ui.min.js'></script>
 		<script src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+		
+		<script>
+			$(
+				function() {
+					$("#pageHeader").load("menubar.html");
+				}
+			);
+		</script>
 	</head>
 	
 	<body>
-		Welcome.
+		<div id="pageHeader" data-role="header">
+			This should not be visible
+		</div>
+		<div id="content" data-role="main" class="ui-content">
+			This should not be visible either
+		</div>
+		<div id="footer" data-role="footer">
+			Neither should this be visible
+		</div>
 	</body>
 </html>
