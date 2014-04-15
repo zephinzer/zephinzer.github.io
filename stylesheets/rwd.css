@@ -1,78 +1,18 @@
-/* Smartphones (portrait and landscape) ----------- */
+/* http://css-tricks.com/snippets/css/media-queries-for-standard-devices/ */
+
+
+/* Phones ----------- */
 @media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
+and (min-width : 0px)
+and (max-width : 530px) {
 	#header-menu-links-desktop {
 		display: none;
 	}
 	
 	#header-menu-links-mobile {
 		display: block;
-	}
-	
-	#header-menu-controlgroup .ui-grid-a {
-		text-align:center;
-		width: 100%;
-	}
-	
-	#header-menu-controlgroup .ui-block-a {
-		text-align: left;
-		width: 30%;
-	}
-	
-	#header-menu-controlgroup .ui-block-b {
-		text-align: right;
-		width: 70%;
-	}
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-  /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-  /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-  /* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-  /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-  /* Styles */
-}
-
-/* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-	#header-menu-links-desktop {
-		display: block;
-	}
-	
-	#header-menu-links-mobile {
-		display: none;
 	}
 		
-
 	#header-menu-controlgroup .ui-grid-a {
 		text-align:center;
 		width: 100%;
@@ -89,18 +29,29 @@ and (min-width : 1224px) {
 	}
 }
 
-/* Large screens ----------- */
+/* Desktops and laptops ----------- */
 @media only screen 
-and (min-width : 1824px) {
-  /* Styles */
+and (min-width :531px) {
+	#header-menu-links-desktop {
+		display: block;
+	}
+	
+	#header-menu-links-mobile {
+		display: none;
+	}
+		
+	#header-menu-controlgroup .ui-grid-a {
+		text-align:center;
+		width: 100%;
+	}
+	
+	#header-menu-controlgroup .ui-block-a {
+		text-align: left;
+		width: 20%;
+	}
+	
+	#header-menu-controlgroup .ui-block-b {
+		text-align: right;
+		width: 80%;
+	}
 }
-
-/* iPhone 4+ ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-  /* Styles */
-}
-
-/* iPhone 5s ----------- */
-/* You've spent way to much on a phone */
