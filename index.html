@@ -1,6 +1,9 @@
 
 <html>
 	<head>
+		<title>
+			zeph|nzer['homepage'];
+		</title>
 		<!--
 		// // // // // //
 		// meta tags   //
@@ -31,11 +34,14 @@
 				href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"></link>
 		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
 		<script>
 			$(
 				function() {
-					$("a")
-						.click( {
+					$("body").bind(
+						"contextmenu",
+						function(e) {
+							e.preventDefault();
 							return false;
 						}
 					);
@@ -107,7 +113,106 @@
 				ABOUT PANEL
 			-->
 			<div id="menu-panel-about" data-role="panel" data-display="overlay" class="jqm-content">
-				About me
+				<h1>About Me</h1>
+				<img src="images/about-me-img2-250x105.jpg" style="width:100%"/>
+				<div id="about-me-academic" data-role="collapsible" class="panel-collapsible">
+					<h1>The Academic</h1>
+					<div data-role="collapsible" data-mini="true" data-theme="a" class="panel-collapsible">
+						<h1>
+							National University of Singapore
+						</h1>
+						<div id="about-description">
+							<div class="ui-header">
+								Duration
+							</div>
+							2011 - <i>present</i>
+							
+							<br /><br />
+							
+							<div class="ui-header">
+								Faculty, Major & Focus Area
+							</div>
+							School of Computing, Computer Science (Software Engineering)
+							
+							<br /><br />
+							
+							<div class="ui-header">
+								Academic Year 13/14
+							</div>
+							Logistics Director of NUS CAC Amplified
+							
+							<br /><br />
+							
+							<div class="ui-header">
+								Academic Year 12/13
+							</div>
+							Undergraduate Research Opportunities Programme in Life Sciences (Molecular Genetics)<br /><br />
+						</div>
+					</div>
+					<div data-role="collapsible" data-mini="true" data-theme="a" class="panel-collapsible">
+						<h1>Catholic Junior College</h1>
+						<div id="about-description">
+							<div class="ui-header">
+								Duration
+							</div>
+							2008 - 2009
+							
+							<br /><br />
+							
+							<div class="ui-header">
+								Academic Achievements
+							</div>
+							GCE 'A' Level Certificate
+							
+							<br /><br />
+							
+							<div class="ui-header">
+								Highlights
+							</div>
+							Performed for Rockafella IV
+							Member of the Outdoor Adventure Club (CJC ODAC)
+							
+						</div>
+					</div>
+					<div data-role="collapsible" data-mini="true" data-theme="a" class="panel-collapsible">
+						<h1>St. Andrew's School</h1>
+						Duration: 1997 - 2006<br />
+					</div>
+				</div>
+
+				<div id="about-me-developer" data-role="collapsible" class="panel-collapsible">
+					<h1>The Developer</h1>
+					<div data-role="collapsible" data-mini="true" data-theme="a" class="panel-collapsible">
+						<h1>Platforms/Frameworks</h1>
+						<div id="about-description">
+							<ul data-role="listview">
+								<li>jQuery</li>
+								<li>Node.js</li>
+								<li>OpenShift</li>
+								<li>Windows Desktop</li>
+								<li>Windows Phone 8</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="collapsible" data-mini="true" data-theme="a" class="panel-collapsible">
+						<h1>Languages</h1>
+						<div id="about-description">
+							<ul data-role="listview">
+								<li>C/C++</li>
+								<li>C#</li>
+								<li>Java</li>
+								<li>JavaScript</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div id="about-me-music" data-role="collapsible" class="panel-collapsible">
+					<h1>The Musician</h1>
+					
+				</div>
+				
+
 			</div>
 			<!--
 				CONNECT PANEL
@@ -119,16 +224,16 @@
 					<span class="label-social">Friend me on Facebook</span>
 				</a>
 				<br />
-				<a target="_blank" class="btn-social btn-twitter"
-					title="Follow @zephinzer on Twitter" href="https://twitter.com/zephinzer">
-					<i></i>
-					<span class="label-social">Follow me on Twitter</span>
-				</a>
-				<br />
 				<a target="_blank" class ="btn-social btn-linkedin"
 					title="Check out my LinkedIn profile" href="http://sg.linkedin.com/in/zephinzer">
 					<i></i>
 					<span class="label-social">Link up on LinkedIn</span>
+				</a>
+				<br />
+				<a target="_blank" class="btn-social btn-twitter"
+					title="Follow @zephinzer on Twitter" href="https://twitter.com/zephinzer">
+					<i></i>
+					<span class="label-social">Follow @me on Twitter</span>
 				</a>
 				<br />
 				<a target="_blank" class ="btn-social btn-soundcloud"
@@ -137,6 +242,25 @@
 					<span class="label-social">Hear me on Soundcloud</span>
 				</a>
 				<br />
+				<a target="_blank" class ="btn-social btn-instagram"
+					title="Check me out on Instagram" href="http://instagram.com/zephinzer">
+					<i></i>
+					<span class="label-social">#tag me on Instagram</span>
+				</a>
+				<br />
+				<a target="_blank" class ="btn-social btn-trello"
+					title="Board me on Trello" href="http://trello.com/zephinzer">
+					<i></i>
+					<span class="label-social">My boards on Trello</span>
+				</a>
+				<br />
+				<a target="_blank" class ="btn-social btn-deviantart"
+					title="Check me out on DeviantArt" href="http://soundcloud.com/zephinzer">
+					<i></i>
+					<span class="label-social">My Art on DeviantArt</span>
+				</a>
+				<br />
+
 			</div>
 			<!--
 				CONTACT PANEL
