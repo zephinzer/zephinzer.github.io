@@ -1,22 +1,13 @@
-@media screen and (max-width: 2048) {
-	#container_menu_mobile {
-		display: none;
-	}
-
-	#container_menu_desktop {
+@media screen and (max-width: 1366) {
+	#header-menu-links-desktop {
 		display: block;
-		margin-top: 0px;
-	}
-	#container_menu_desktop .menu-link {
-		width: 80;
 	}
 	
-	.header-menu {
-		display: block;
-		line-height: 0px;
-		vertical-align: middle;
-		width: 100%;
+	#header-menu-links-mobile {
+		display: none;
 	}
+		
+
 	#header-menu-controlgroup .ui-grid-a {
 		text-align:center;
 		width: 100%;

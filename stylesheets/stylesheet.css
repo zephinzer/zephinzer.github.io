@@ -1,10 +1,21 @@
-@import url("mobile.css");
 @import url("desktop.css");
+@import url("mobile.css");
 
 #header-menu-controlgroup {
 	width: 100%;
 }
-	
+
+#header-menu-links-desktop .menu-link {
+	width: 80;
+}
+
+.header-menu {
+	display: block;
+	line-height: 0px;
+	vertical-align: middle;
+	width: 100%;
+}
+
 .label-social {
 	padding: 0 7px 0 29px;
 	white-space: nowrap;

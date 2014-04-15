@@ -1,10 +1,10 @@
 @media screen and (max-width: 530) {
-	#container_menu_mobile {
-		display: block;
+	#header-menu-links-desktop {
+		display: none;
 	}
 	
-	#container_menu_desktop {
-		display: none;
+	#header-menu-links-mobile {
+		display: block;
 	}
 	
 	#header-menu-controlgroup .ui-grid-a {
